@@ -1,11 +1,13 @@
 const express = require("express")
 const app = express()
 const cors=require("cors")
+const PORT = process.env.PORT || 3000;
+
 const myname = "Ishaan"
 const mypass = "123"
 app.use(cors())
 app.use(express.json())
-app.listen(3000, () => {
+app.listen(PORT, () => {
     console.log("Server started")
 })
 app.use(express.urlencoded({extended:true}))
@@ -20,3 +22,6 @@ app.post("/login", (req, res) => {
         res.send(false)
     }
 })
+app.get("/", (req, res) => {
+    res.send("Backend is running successfully! 🎉");
+});
